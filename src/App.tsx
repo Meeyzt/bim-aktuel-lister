@@ -4,9 +4,7 @@ import { AktuelProduct } from "./api/aktuel";
 import {
   ArrowDown01Icon,
   ArrowDown10Icon,
-  Grid2x2,
   Grid2x2Icon,
-  GridIcon,
   Rows3Icon,
 } from "lucide-react";
 
@@ -90,127 +88,8 @@ function App() {
 
   useEffect(() => {
     setIsLoading(false);
-    setAktuelProducts([
-      {
-        imageUrl:
-          "https://www.bim.com.tr/Uploads/aktuel-urunler/1146_kucuk_543X467_23-temmuz-gida-2-019.jpg",
-        title: "Osmancık Pirinç",
-        price: "225,\n00\n₺",
-        description: '<div class="gramajadet">• 5 Kg</div>',
-        pageUrl: "https://www.bim.com.tr/?Bim_AktuelTarihKey=1146",
-        date: "23 Temmuz Salı",
-      },
-      {
-        imageUrl:
-          "https://www.bim.com.tr/Uploads/aktuel-urunler/1146_kucuk_543X467_23-temmuz-gida-2-021.jpg",
-        title: "Kırmızı Biber Dolgulu Yeşil Zeytin",
-        price: "135,\n00\n₺",
-        description:
-          '<div class="gramajadet">• 1000 g</div><ul><li><span class="bullet">•</span><span class="text"> 201-260 adet/kg</span></li></ul>',
-        pageUrl: "https://www.bim.com.tr/?Bim_AktuelTarihKey=1146",
-        date: "23 Temmuz Salı",
-      },
-      {
-        imageUrl:
-          "https://www.bim.com.tr/Uploads/aktuel-urunler/1146_kucuk_543X467_23-temmuz-gida-2-020.jpg",
-        title: "Pilavlık Bulgur",
-        price: "49,\n00\n₺",
-        description: '<div class="gramajadet">• 2,5 Kg</div>',
-        pageUrl: "https://www.bim.com.tr/?Bim_AktuelTarihKey=1146",
-        date: "23 Temmuz Salı",
-      },
-      {
-        imageUrl:
-          "https://www.bim.com.tr/Uploads/aktuel-urunler/1146_kucuk_543X467_23-temmuz-gida-2-018.jpg",
-        title: "%0,5 Yağlı Süt",
-        price: "21,\n90\n₺",
-        description: '<div class="gramajadet">• 1 L</div>',
-        pageUrl: "https://www.bim.com.tr/?Bim_AktuelTarihKey=1146",
-        date: "23 Temmuz Salı",
-      },
-      {
-        imageUrl:
-          "https://www.bim.com.tr/Uploads/aktuel-urunler/1146_kucuk_543X467_23-temmuz-gida-2-022.jpg",
-        title: "Ton Balığı",
-        price: "79,\n75\n₺",
-        description: '<div class="gramajadet">• 4x80 g</div>',
-        pageUrl: "https://www.bim.com.tr/?Bim_AktuelTarihKey=1146",
-        date: "23 Temmuz Salı",
-      },
-      {
-        imageUrl:
-          "https://www.bim.com.tr/Uploads/aktuel-urunler/1146_kucuk_543X467_23-temmuz-gida-2-014.jpg",
-        title: "Margarin Kase 250 G Paket 250 G",
-        price: "49,\n50\n₺",
-        description: "",
-        pageUrl: "https://www.bim.com.tr/?Bim_AktuelTarihKey=1146",
-        date: "23 Temmuz Salı",
-      },
-      {
-        imageUrl:
-          "https://www.bim.com.tr/Uploads/aktuel-urunler/1146_kucuk_543X467_23-temmuz-gida-2-013.jpg",
-        title: "Süt Karameli Süt Reçeli",
-        price: "23,\n75\n₺",
-        description: "",
-        pageUrl: "https://www.bim.com.tr/?Bim_AktuelTarihKey=1146",
-        date: "23 Temmuz Salı",
-      },
-      {
-        imageUrl:
-          "https://www.bim.com.tr/Uploads/aktuel-urunler/1146_kucuk_543X467_23-temmuz-gida-2-017.jpg",
-        title: "Domates Salçası",
-        price: "32,\n50\n₺",
-        description: "",
-        pageUrl: "https://www.bim.com.tr/?Bim_AktuelTarihKey=1146",
-        date: "23 Temmuz Salı",
-      },
-      {
-        imageUrl:
-          "https://www.bim.com.tr/Uploads/aktuel-urunler/1146_kucuk_543X467_23-temmuz-gida-2-015.jpg",
-        title: "Tatlı Biber Salçası",
-        price: "28,\n50\n₺",
-        description: '<div class="gramajadet">• 350 G</div>',
-        pageUrl: "https://www.bim.com.tr/?Bim_AktuelTarihKey=1146",
-        date: "23 Temmuz Salı",
-      },
-      {
-        imageUrl:
-          "https://www.bim.com.tr/Uploads/aktuel-urunler/1146_kucuk_543X467_23-temmuz-gida-2-016.jpg",
-        title: "Domates Rendesi",
-        price: "21,\n50\n₺",
-        description: '<div class="gramajadet">• 700 G</div>',
-        pageUrl: "https://www.bim.com.tr/?Bim_AktuelTarihKey=1146",
-        date: "23 Temmuz Salı",
-      },
-      {
-        imageUrl:
-          "https://www.bim.com.tr/Uploads/aktuel-urunler/1146_kucuk_543X467_23-temmuz-gida-2-011.jpg",
-        title: "Fıstık&Sade",
-        price: "150,\n00\n₺",
-        description: '<div class="gramajadet">• 680 ml / 500g</div>',
-        pageUrl: "https://www.bim.com.tr/?Bim_AktuelTarihKey=1146",
-        date: "23 Temmuz Salı",
-      },
-      {
-        imageUrl:
-          "https://www.bim.com.tr/Uploads/aktuel-urunler/1146_kucuk_543X467_23-temmuz-gida-2-012.jpg",
-        title: "Sade",
-        price: "90,\n00\n₺",
-        description: '<div class="gramajadet">• 680 ml / 500 g</div>',
-        pageUrl: "https://www.bim.com.tr/?Bim_AktuelTarihKey=1146",
-        date: "23 Temmuz Salı",
-      },
-      {
-        imageUrl:
-          "https://www.bim.com.tr/Uploads/aktuel-urunler/1146_kucuk_543X467_23-temmuz-gida-2-009.jpg",
-        title: "Pizza Extra Karışık",
-        price: "87,\n50\n₺",
-        description: '<div class="gramajadet">• 475 g</div>',
-        pageUrl: "https://www.bim.com.tr/?Bim_AktuelTarihKey=1146",
-        date: "23 Temmuz Salı",
-      },
-    ]);
-    // getAktuelProducts();
+    setAktuelProducts([]);
+    getAktuelProducts();
   }, []);
 
   return (
@@ -274,7 +153,7 @@ function App() {
                         : "bg-zinc-500 hover:bg-zinc-600"
                     }`}
                   >
-                    <GridIcon />
+                    <Grid2x2Icon />
                   </div>
 
                   <div

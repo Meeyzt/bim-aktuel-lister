@@ -4,6 +4,5 @@ export type AktuelProduct = {
   price: string;
   description: string;
   pageUrl: string;
-  count: number;
   date: string;
 };
