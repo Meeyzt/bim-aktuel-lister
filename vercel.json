@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/server/(.*)",
+      "destination": "https://your-api-app.vercel.app/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "https://your-frontend-app.vercel.app/$1"
+    }
+  ]
+}
