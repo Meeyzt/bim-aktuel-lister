@@ -19,9 +19,16 @@ app.get('/scrape', async (req, res) => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto('https://www.bim.com.tr');
+    const responseItems = [];
 
     const tabs = await page.evaluate(() => {
       const tabs = document.querySelector("#form1 > div > div.homePage > div.aktuelArea.makeTwo > div > div.tabArea > div.subButtonArea.subButtonArea-1.active > div");
+
+      console.log(tabs)
+
+      if (!tabs) {
+        return [];
+      }
 
       // get Tab a elements
       const aElements = tabs.querySelectorAll('a');
@@ -34,11 +41,6 @@ app.get('/scrape', async (req, res) => {
       });
 
       return tabTexts;
-    });
-
-    res.writeHead(200, {
-      'Content-Type': 'application/json',
-      'Transfer-Encoding': 'chunked'
     });
 
     for (const tab of tabs) {
@@ -93,14 +95,17 @@ app.get('/scrape', async (req, res) => {
       }, tab.text);
 
       // Parça parça veri gönder
-      res.write(JSON.stringify(items));
+      responseItems.push(...items);
     }
 
     await browser.close();
-    res.end();
+    res.json({
+      items: responseItems,
+      dates: tabs
+    });
   } catch (error) {
     console.error(error);
-    res.write('Hata oluştu');
+    res.status(500).send({ error: 'Bir hata oluştu' });
     res.end();
   }
 });

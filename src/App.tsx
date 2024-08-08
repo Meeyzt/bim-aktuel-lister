@@ -10,6 +10,7 @@ import {
 
 function App() {
   const [aktuelProducts, setAktuelProducts] = useState<AktuelProduct[]>([]);
+  const [dates, setDates] = useState<string[]>([]);
   const [searchText, setSearchText] = useState("");
   const [hideSearchLabel, setHideSearchLabel] = useState(false);
   const [sort, setSort] = useState(false);
@@ -17,30 +18,13 @@ function App() {
   const [viewType, setViewType] = useState("list");
 
   async function getAktuelProducts() {
-    const response = await fetch("http://localhost:3001/scrape");
-    const reader = response.body.getReader();
-    const decoder = new TextDecoder("utf-8");
+    const { items, dates } = await fetch("http://localhost:3001/scrape").then(
+      (res) => res.json()
+    );
 
-    let isRequestDone = false;
-
-    while (!isRequestDone) {
-      const { done, value } = await reader.read();
-
-      if (done) {
-        isRequestDone = true;
-      }
-
-      const chunkText = decoder.decode(value);
-
-      // Parse and update state
-      try {
-        const parsedData: AktuelProduct[] = JSON.parse(chunkText);
-        setAktuelProducts((prevProducts) => [...prevProducts, ...parsedData]);
-        setIsLoading(false);
-      } catch (e) {
-        console.error("JSON parse error:", e);
-      }
-    }
+    setAktuelProducts(items);
+    setDates(dates.map(({ text }) => text));
+    setIsLoading(false);
   }
 
   const searchedProducts = useMemo(
